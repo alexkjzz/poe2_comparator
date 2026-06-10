@@ -1,0 +1,9 @@
+# Compiler outputs
+/target/
+
+# Local configuration files
+**/*.rs.bk
+.DS_Store
+
+# IDE - VS Code settings
+.vscode/v

@@ -1,0 +1,27 @@
+{
+  "name": "Loath Scratch",
+  "baseType": "Scythian Dagger",
+  "ilvl": 83,
+  "rarity": "Rare",
+  "properties": [
+    {
+      "name": "Physical Damage",
+      "values": [["58-145"]],
+      "displayMode": 0
+    },
+    {
+      "name": "Attack Speed",
+      "values": [["1.55"]],
+      "displayMode": 0
+    },
+    {
+      "name": "Critical Strike Chance",
+      "values": [["4.00%"]],
+      "displayMode": 0
+    }
+  ],
+  "explicitMods": [
+    "+23 to Dexterity",
+    "Adds 12 to 24 Physical Damage"
+  ]
+}
