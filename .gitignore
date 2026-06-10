@@ -1,3 +1,5 @@
+.gitignore
+
 # Compiler outputs
 /target/
 
