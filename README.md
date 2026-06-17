@@ -1,1 +1,4 @@
-# poe2_comparator
+# README 
+
+TODO: 
+- check api ratelimit

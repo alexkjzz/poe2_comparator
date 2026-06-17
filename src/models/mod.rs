@@ -25,12 +25,13 @@ pub struct ItemProperty {
 
 impl ApiItem {
     pub fn get_numeric_property(&self, target_name: &str) -> Option<f32> {
-            self.properties.iter()
-                .find(|p| p.name == target_name)
-                .and_then(|p| p.values.first())
-                .and_then(|v| v.first())
-                .and_then(|s| s.parse::<f32>().ok())
-        }
+        self.properties.iter()
+            .find(|prop| prop.name == target_name)
+            .and_then(|prop| prop.values.first())
+            .and_then(|value| value.first())
+            .and_then(|string| string.parse::<f32>().ok())
+    }
+
     pub fn get_damage_bounds(&self, target_name: &str) -> Option<&str> {
         self.properties.iter()
             .find(|prop| prop.name == target_name)
