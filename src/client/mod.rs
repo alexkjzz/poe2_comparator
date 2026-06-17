@@ -9,9 +9,9 @@ pub struct Poe2Client {
 
 impl Poe2Client {
     pub fn new(target_url: &str) -> Self {
-        let user_agent = "PoE2_DPS_Comparator_Production_Engine/1.2.0 (Contact: developer@local)";
+        let user_agent: &str = "PoE2_DPS_Comparator_Production_Engine/1.2.0 (Contact: developer@local)";
         
-        let http_client = Client::builder()
+        let http_client: Client = Client::builder()
             .user_agent(user_agent)
             .timeout(Duration::from_secs(5))
             .connect_timeout(Duration::from_secs(2))
@@ -29,15 +29,15 @@ impl Poe2Client {
     pub fn fetch_payload(&self) -> Result<String, String> {
         trace!("NET_CLIENT: Executing outbound HTTP GET call.");
         
-        let response = self.http_client
+        let response: reqwest::blocking::Response = self.http_client
             .get(&self.target_url)
             .send()
-            .map_err(|e| format!("NET_ERR_CONNECTION_FAILED: {}", e))?;
+            .map_err(|error: reqwest::Error| format!("NET_ERR_CONNECTION_FAILED: {}", error))?;
 
         if !response.status().is_success() {
             return Err(format!("NET_ERR_HTTP_STATUS_INVALID: {}", response.status()));
         }
 
-        response.text().map_err(|e| format!("NET_ERR_READ_STREAM_FAILED: {}", e))
+        response.text().map_err(|error: reqwest::Error| format!("NET_ERR_READ_STREAM_FAILED: {}", error))
     }
 }

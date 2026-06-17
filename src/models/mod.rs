@@ -26,18 +26,18 @@ pub struct ItemProperty {
 impl ApiItem {
     pub fn get_numeric_property(&self, target_name: &str) -> Option<f32> {
         self.properties.iter()
-            .find(|prop| prop.name == target_name)
-            .and_then(|prop| prop.values.first())
-            .and_then(|value| value.first())
-            .and_then(|string| string.parse::<f32>().ok())
+            .find(|prop: &&ItemProperty| prop.name == target_name)
+            .and_then(|prop: &ItemProperty| prop.values.first())
+            .and_then(|value: &Vec<String>| value.first())
+            .and_then(|string: &String| string.parse::<f32>().ok())
     }
 
     pub fn get_damage_bounds(&self, target_name: &str) -> Option<&str> {
         self.properties.iter()
-            .find(|prop| prop.name == target_name)
-            .and_then(|prop| prop.values.first())
-            .and_then(|value| value.first())
-            .map(|string| string.as_str())
+            .find(|prop: &&ItemProperty| prop.name == target_name)
+            .and_then(|prop: &ItemProperty| prop.values.first())
+            .and_then(|value: &Vec<String>| value.first())
+            .map(|string: &String| string.as_str())
     }
 }
     

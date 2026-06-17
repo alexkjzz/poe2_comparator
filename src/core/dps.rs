@@ -20,25 +20,25 @@ pub fn calculate_total_dps(
 ) -> f32 {
     let mut accumulated_mean_damage = 0.0;
 
-    if let Some(p_str) = phys_bounds {
-        if let Ok(mean) = parse_bounds_to_mean(p_str) {
+    if let Some(phys_str) = phys_bounds {
+        if let Ok(mean) = parse_bounds_to_mean(phys_str) {
             accumulated_mean_damage += mean;
         }
     }
 
-    if let Some(e_str) = elem_bounds {
-        if let Ok(mean) = parse_bounds_to_mean(e_str) {
+    if let Some(elem_str) = elem_bounds {
+        if let Ok(mean) = parse_bounds_to_mean(elem_str) {
             accumulated_mean_damage += mean;
         }
     }
 
-    if let Some(c_str) = chaos_bounds {
-        if let Ok(mean) = parse_bounds_to_mean(c_str) {
+    if let Some(chaos_str) = chaos_bounds {
+        if let Ok(mean) = parse_bounds_to_mean(chaos_str) {
             accumulated_mean_damage += mean;
         }
     }
 
-    let calculated_dps = accumulated_mean_damage * attack_speed;
+    let calculated_dps: f32 = accumulated_mean_damage * attack_speed;
     trace!("EXEC dps::calculate_total_dps -> Total Cumulative DPS: {}", calculated_dps);
     
     calculated_dps
