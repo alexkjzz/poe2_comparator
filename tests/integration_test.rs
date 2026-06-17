@@ -1,6 +1,6 @@
 use std::fs;
 use poe2_comparator::models::ApiItem;
-use poe2_comparator::dps::{parse_bounds_to_mean, calculate_total_dps};
+use poe2_comparator::core::dps::{parse_bounds_to_mean, calculate_total_dps};
 
 #[test]
 fn test_real_api_payload_ingestion_pipeline() {

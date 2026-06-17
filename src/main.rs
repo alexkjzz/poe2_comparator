@@ -1,5 +1,5 @@
 use poe2_comparator::models::ApiItem;
-use poe2_comparator::dps::calculate_total_dps;
+use poe2_comparator::core::calculate_total_dps;
 
 use std::time::Instant;
 use log::{info, warn, error};

@@ -1,2 +1,3 @@
 pub mod models;
-pub mod dps;
+pub mod core;
+pub mod client;
