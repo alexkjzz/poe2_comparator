@@ -1,19 +1,34 @@
+colors: true
+output:
+  - summary
+  - execution
+  - failure
+
+pre-commit:
+  parallel: true
+  commands:
+    rust-fmt:
+      glob: "*.rs"
+      run: cargo fmt --check --all
+
+    rust-clippy:
+      glob: "*.rs"
+      run: cargo clippy -- -D warnings
+
+    frontend-lint:
+      glob: "*.{js,ts,jsx,tsx,vue,svelte}"
+      run: npx eslint {staged_files} --fix --quiet
+
+    frontend-format:
+      glob: "*.{js,ts,json,md,css}"
+      run: npx prettier --write {staged_files}
+
 commit-msg:
-  parallel: false
-  jobs:
-    - name: commitlint
-      run: npx commitlint --edit $1
-      stage_fixed: true
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}
 
 pre-push:
-  parallel: false
-  jobs:
-    - name: cargo-check-all
-      run: cargo check --all
-      tags:
-        - rust
-    
-    - name: cargo-test-all
-      run: cargo test --all
-      tags:
-        - rust
+  commands:
+    rust-tests:
+      run: cargo test
