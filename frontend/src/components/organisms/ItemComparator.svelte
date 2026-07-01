@@ -1,75 +1,37 @@
 <script lang="ts">
-  import ItemCard from '../molecules/ItemCard.svelte';
-  import Button from '../atoms/Button.svelte';
+  import ComparatorHeader from '../molecules/ComparatorHeader.svelte';
+  import ComparatorSearchPanel from '../molecules/ComparatorSearchPanel.svelte';
+  import ComparisonGrid from '../molecules/ComparisonGrid.svelte';
+  import ComparatorActions from '../molecules/ComparatorActions.svelte';
+  import { useComparator } from '../../lib/comparator.logic';
+  import type { Item } from '../../stores/items';
 
-  interface Item {
-    id: string;
-    name: string;
-    type: string;
-    rarity: 'common' | 'magic' | 'rare' | 'unique';
-    level: number;
-    stats?: string[];
-    imageUrl?: string;
-  }
+  const { selectedItem1, selectedItem2, swap, clear, setItemsFromQuery } = useComparator();
 
-  interface Props {
-    item1?: Item | null;
-    item2?: Item | null;
-    onSwap?: () => void;
-  }
-
-  let { item1, item2, onSwap }: Props = $props();
-
-  const placeholderItem: Item = {
-    id: 'placeholder',
+  const emptySlot1: Item = {
+    id: 'slot-1-empty',
     name: 'Empty Slot',
     type: 'No Item Selected',
     rarity: 'common',
     level: 0,
-    stats: ['Paste item or search above'],
+    stats: ['Paste item or search above']
+  };
+
+  const emptySlot2: Item = {
+    id: 'slot-2-empty',
+    name: 'Empty Slot',
+    type: 'No Item Selected',
+    rarity: 'common',
+    level: 0,
+    stats: ['Paste item or search above']
   };
 </script>
 
-<div>
-  <div>
-    <div>
-      <div>Item 1</div>
-      {#if item1}
-        <ItemCard {...item1} />
-      {:else}
-        <ItemCard {...placeholderItem} />
-      {/if}
-    </div>
-
-    <div>
-      <Button onClick={onSwap}>SWAP</Button>
-    </div>
-
-    <div>
-      <div>Item 2</div>
-      {#if item2}
-        <ItemCard {...item2} />
-      {:else}
-        <ItemCard {...placeholderItem} />
-      {/if}
-    </div>
+<section class="p-8">
+  <div class="max-w-6xl">
+    <ComparatorHeader />
+    <ComparatorSearchPanel onSearch={setItemsFromQuery} />
+    <ComparisonGrid item1={$selectedItem1} item2={$selectedItem2} {emptySlot1} {emptySlot2} />
+    <ComparatorActions onSwap={swap} onClear={clear} />
   </div>
-
-  {#if item1 && item2}
-    <div>
-      <div>
-        <h3>Comparison</h3>
-        <div>
-          <div>
-            <span>Rarity:</span>
-            <span>{item1.rarity}</span> vs <span>{item2.rarity}</span>
-          </div>
-          <div>
-            <span>Level:</span>
-            <span>{item1.level}</span> vs <span>{item2.level}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  {/if}
-</div>
+</section>

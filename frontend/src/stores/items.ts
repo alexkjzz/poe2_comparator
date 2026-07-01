@@ -4,11 +4,13 @@ export interface Item {
   id: string;
   name: string;
   type: string;
-  rarity: "common" | "magic" | "rare" | "unique";
+  rarity: ItemRarity;
   level: number;
   stats?: string[];
   imageUrl?: string;
 }
+
+export type ItemRarity = "common" | "magic" | "rare" | "unique";
 
 export const selectedItem1 = writable<Item | null>(null);
 export const selectedItem2 = writable<Item | null>(null);

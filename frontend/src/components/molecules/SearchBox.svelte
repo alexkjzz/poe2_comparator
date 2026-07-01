@@ -19,7 +19,8 @@
   <Input
     placeholder={placeholder}
     value={query}
-    onChange={handleSearch}
+    onInput={handleSearch}
     type="search"
+    className="w-full bg-input border border-border rounded px-4 py-2 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary"
   />
 </div>
