@@ -16,8 +16,8 @@ pre-commit:
       run: cargo clippy -- -D warnings
 
     frontend-lint:
-      glob: "*.{js,ts,jsx,tsx,vue,svelte}"
-      run: npm --prefix frontend run check
+      glob: "*.{js,ts,jsx,tsx}"
+      run: npm --prefix frontend run lint
 
     frontend-format:
       glob: "*.{js,ts,json,md,css}"

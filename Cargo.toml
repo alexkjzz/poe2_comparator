@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "crates/poe2_comparator_core",
+    "crates/poe2_comparator_api",
     "src-tauri",
 ]
 resolver = "2"

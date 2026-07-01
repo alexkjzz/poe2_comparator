@@ -10,7 +10,8 @@ pub struct Poe2Client {
 
 impl Poe2Client {
     pub fn new(target_url: &str) -> Self {
-        let user_agent: &str = "PoE2_DPS_Comparator_Production_Engine/1.2.0 (Contact: developer@local)";
+        let user_agent: &str =
+            "PoE2_DPS_Comparator_Production_Engine/1.2.0 (Contact: developer@local)";
 
         let http_client: Client = Client::builder()
             .user_agent(user_agent)
@@ -30,11 +31,11 @@ impl Poe2Client {
     pub fn fetch_payload(&self) -> Result<String, String> {
         trace!("NET_CLIENT: Executing outbound HTTP GET call.");
 
-        let response: reqwest::blocking::Response = self
-            .http_client
-            .get(&self.target_url)
-            .send()
-            .map_err(|error: reqwest::Error| format!("NET_ERR_CONNECTION_FAILED: {error}"))?;
+        let response: reqwest::blocking::Response =
+            self.http_client
+                .get(&self.target_url)
+                .send()
+                .map_err(|error: reqwest::Error| format!("NET_ERR_CONNECTION_FAILED: {error}"))?;
 
         if !response.status().is_success() {
             return Err(format!(

@@ -25,12 +25,14 @@ Cargo.lock
 node_modules/
 frontend/node_modules/
 frontend/dist/
+frontend/.vite-inspect
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
-# Tauri build outputs
+# Tauri build outputs (if needed in future)
 src-tauri/target/
 src-tauri/dist/
 app/
@@ -41,7 +43,6 @@ app/
 
 # OS generated files
 Thumbs.db
-.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -53,3 +54,6 @@ Thumbs.db
 # Cargo
 .cargo/registry
 .cargo/git
+
+# Session state (local only)
+.copilot/
