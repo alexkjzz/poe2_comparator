@@ -32,6 +32,7 @@ src/
 ## 🎨 Theme & Colors
 
 The overlay uses a **dark POE2 theme** with gold accents:
+
 - Primary: Gold (`#d4af37`)
 - Background: Dark (`#1a1a1a`)
 - Rarity Colors: Common, Magic, Rare, Unique
@@ -41,20 +42,24 @@ CSS variables are defined in `styles/global.css` for consistency.
 ## 🔧 Components
 
 ### Atoms
+
 - **Button**: Multiple variants (primary, secondary, danger) and sizes (sm, md, lg)
 - **Badge**: Item rarity badges (common, magic, rare, unique, currency)
 - **Input**: Searchable input with labels
 
 ### Molecules
+
 - **SearchBox**: Search interface for items
 - **ItemCard**: Displays item stats, rarity, level
 
 ### Organisms
+
 - **ItemComparator**: Main comparison interface with two item slots
 
 ## 📦 State Management
 
 Global item state via Svelte stores in `stores/items.ts`:
+
 - `selectedItem1`: First item in comparison
 - `selectedItem2`: Second item in comparison
 - `swapItems()`: Swap items between slots

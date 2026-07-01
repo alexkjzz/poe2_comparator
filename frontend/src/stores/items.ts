@@ -1,10 +1,10 @@
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 
 export interface Item {
   id: string;
   name: string;
   type: string;
-  rarity: 'common' | 'magic' | 'rare' | 'unique';
+  rarity: "common" | "magic" | "rare" | "unique";
   level: number;
   stats?: string[];
   imageUrl?: string;

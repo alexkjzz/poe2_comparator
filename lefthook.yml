@@ -22,6 +22,7 @@ pre-commit:
     frontend-format:
       glob: "*.{js,ts,json,md,css}"
       run: npm --prefix frontend exec prettier -- --write {staged_files}
+      stage_fixed: true
 
 commit-msg:
   commands:
