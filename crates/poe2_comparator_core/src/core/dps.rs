@@ -3,12 +3,18 @@ use log::trace;
 pub fn parse_bounds_to_mean(bounds_str: &str) -> Result<f32, String> {
     let components: Vec<&str> = bounds_str.split('-').collect();
     if components.len() != 2 {
-        return Err(format!("ERR_INVALID_BOUNDS_FORMAT: {}", bounds_str));
+        return Err(format!("ERR_INVALID_BOUNDS_FORMAT: {bounds_str}"));
     }
-    
-    let min_val: f32 = components[0].trim().parse().map_err(|_| "ERR_PARSE_MIN_FAILED")?;
-    let max_val: f32 = components[1].trim().parse().map_err(|_| "ERR_PARSE_MAX_FAILED")?;
-    
+
+    let min_val: f32 = components[0]
+        .trim()
+        .parse()
+        .map_err(|_| "ERR_PARSE_MIN_FAILED")?;
+    let max_val: f32 = components[1]
+        .trim()
+        .parse()
+        .map_err(|_| "ERR_PARSE_MAX_FAILED")?;
+
     Ok((min_val + max_val) / 2.0)
 }
 
@@ -39,7 +45,7 @@ pub fn calculate_total_dps(
     }
 
     let calculated_dps: f32 = accumulated_mean_damage * attack_speed;
-    trace!("EXEC dps::calculate_total_dps -> Total Cumulative DPS: {}", calculated_dps);
-    
+    trace!("EXEC dps::calculate_total_dps -> Total Cumulative DPS: {calculated_dps}");
+
     calculated_dps
 }
