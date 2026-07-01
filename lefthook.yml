@@ -1,0 +1,19 @@
+commit-msg:
+  parallel: false
+  jobs:
+    - name: commitlint
+      run: npx commitlint --edit $1
+      stage_fixed: true
+
+pre-push:
+  parallel: false
+  jobs:
+    - name: cargo-check-all
+      run: cargo check --all
+      tags:
+        - rust
+    
+    - name: cargo-test-all
+      run: cargo test --all
+      tags:
+        - rust
