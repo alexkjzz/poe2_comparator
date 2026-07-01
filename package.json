@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "prepare": "lefthook install",
+    "commitlint": "commitlint --from main",
+    "commitlint-verify": "commitlint --from main --to HEAD"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.0",
+    "@commitlint/config-conventional": "^21.2.0"
+  }
+}
