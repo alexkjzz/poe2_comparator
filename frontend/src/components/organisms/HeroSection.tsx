@@ -7,7 +7,6 @@ export function HeroSection() {
 
   return (
     <div className="space-y-8 max-w-2xl text-center">
-      {/* Logo/Title */}
       <div className="space-y-3">
         <h1 className="text-5xl md:text-7xl font-bold text-primary">
           Path of Exile 2
@@ -20,7 +19,6 @@ export function HeroSection() {
         </p>
       </div>
 
-      {/* CTA Button */}
       <div className="pt-4">
         <Button
           variant="primary"
